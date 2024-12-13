@@ -1,0 +1,17 @@
+spring:
+  application:
+   name: Consumer-Service
+  boot:
+    admin:
+      client:
+        url: http://localhost:9090/
+server:
+  port: 9990
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+
