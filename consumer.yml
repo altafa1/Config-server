@@ -13,5 +13,23 @@ management:
     web:
       exposure:
         include: '*'
+  endpoint:
+    health:
+      show-details: always
+  health:
+    circuitBreakers:
+      enabled: true        
 
-
+resilience4j:
+  providerbreaker:
+    instances:
+      commentBreaker:
+        registerHealthIndicator: true
+        eventConsumerBufferSize: 8
+        failureRateThreshold: 50
+        minimumNumberOfCalls: 5
+        waitDurationInOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 6
+        permittedNumberOfCallsInHalfOpenState: 3
+        slidingWindowSize: 5
+        slidingWindowType: COUNT_BASED
